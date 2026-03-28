@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AltMindShift - Mental Health & Wellbeing Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --brand-primary: #2C5F2D;
+            --brand-secondary: #97BC62;
+            --brand-bg: #F9FBFA;
+            --brand-accent: #DAA520;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--brand-bg);
+            color: #1e293b; /* slate-800 */
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            color: var(--brand-primary);
+        }
+
+        .section-padding {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
+        @media (min-width: 768px) {
+            .section-padding {
+                padding-top: 8rem;
+                padding-bottom: 8rem;
+            }
+        }
+
+        .container-custom {
+            max-width: 80rem; /* 7xl */
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        .card-shadow {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+            transition: all 0.3s duration;
+        }
+
+        .card-shadow:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .bg-brand-primary { background-color: var(--brand-primary); }
+        .text-brand-primary { color: var(--brand-primary); }
+        .border-brand-primary { border-color: var(--brand-primary); }
+        .bg-brand-secondary { background-color: var(--brand-secondary); }
+        .text-brand-secondary { color: var(--brand-secondary); }
+        .bg-brand-bg { background-color: var(--brand-bg); }
+        .text-brand-accent { color: var(--brand-accent); }
+        .fill-brand-accent { fill: var(--brand-accent); }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--brand-primary);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1e421e;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="main-header" class="fixed top-0 w-full z-[1000] transition-all duration-300 bg-white lg:bg-[#F9FBFA]/95 backdrop-blur-md py-4 lg:py-6">
+        <div class="container-custom flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-9 h-9 md:w-10 md:h-10 rounded-full flex items-center justify-center text-white bg-brand-primary shadow-sm">
+                    <i data-lucide="brain" class="w-5 h-5 md:w-6 md:h-6"></i>
+                </div>
+                <span class="text-xl md:text-2xl font-serif font-bold tracking-tight text-brand-primary">AltMindShift</span>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#about" class="text-sm font-semibold uppercase tracking-wider text-brand-primary hover:text-brand-secondary transition-colors nav-link">About</a>
+                <a href="#services" class="text-sm font-semibold uppercase tracking-wider text-brand-primary hover:text-brand-secondary transition-colors nav-link">Services</a>
+                <a href="#workshops" class="text-sm font-semibold uppercase tracking-wider text-brand-primary hover:text-brand-secondary transition-colors nav-link">Workshops</a>
+                <a href="#reviews" class="text-sm font-semibold uppercase tracking-wider text-brand-primary hover:text-brand-secondary transition-colors nav-link">Reviews</a>
+                <a href="#faq" class="text-sm font-semibold uppercase tracking-wider text-brand-primary hover:text-brand-secondary transition-colors nav-link">FAQ</a>
+                <a href="#contact" class="text-sm font-semibold uppercase tracking-wider text-brand-primary hover:text-brand-secondary transition-colors nav-link">Contact</a>
+                <a href="#contact" class="px-6 py-2.5 bg-brand-primary text-white rounded-full text-sm font-bold hover:bg-brand-secondary transition-all shadow-md">
+                    Book Appointment
+                </a>
+            </nav>
+
+            <button id="menu-toggle" class="md:hidden p-2 rounded-lg bg-white text-brand-primary shadow-md border border-brand-primary/10">
+                <i data-lucide="menu" class="w-7 h-7"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[1100] p-8 flex flex-col gap-8 transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="flex justify-between items-center">
+            <span class="text-2xl font-serif font-bold text-brand-primary">AltMindShift</span>
+            <button id="menu-close"><i data-lucide="x" class="w-8 h-8 text-brand-primary"></i></button>
+        </div>
+        <div class="flex flex-col gap-6">
+            <a href="#about" class="text-2xl font-serif text-slate-800 mobile-link">About</a>
+            <a href="#services" class="text-2xl font-serif text-slate-800 mobile-link">Services</a>
+            <a href="#workshops" class="text-2xl font-serif text-slate-800 mobile-link">Workshops</a>
+            <a href="#reviews" class="text-2xl font-serif text-slate-800 mobile-link">Reviews</a>
+            <a href="#faq" class="text-2xl font-serif text-slate-800 mobile-link">FAQ</a>
+            <a href="#contact" class="text-2xl font-serif text-slate-800 mobile-link">Contact</a>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-center pt-36 pb-12 lg:pt-44 lg:pb-24 overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img 
+                    src="https://images.unsplash.com/photo-1527137342181-19aab11a8ee1?auto=format&fit=crop&q=80&w=2070" 
+                    alt="Calming Nature" 
+                    class="w-full h-full object-cover opacity-15"
+                >
+                <div class="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-[#F9FBFA] via-[#F9FBFA]/90 lg:via-[#F9FBFA]/80 to-transparent"></div>
+            </div>
+
+            <div class="container-custom relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="text-center lg:text-left pt-12 lg:pt-0">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/10 text-brand-primary text-xs font-bold uppercase tracking-widest mb-6">
+                        <i data-lucide="shield-check" class="w-4 h-4"></i> Trusted Mental Health Care
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight mb-6 lg:mb-8">
+                        Compassionate Care for <br class="hidden sm:block">
+                        <span class="text-brand-secondary italic">Your Mental Wellbeing</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-slate-600 mb-8 lg:mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                        We provide evidence-based intervention strategies to help you navigate emotional problems and build lasting resilience.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#contact" class="px-8 py-4 bg-brand-primary text-white rounded-full text-lg font-bold flex items-center justify-center gap-2 hover:bg-brand-secondary transition-all shadow-lg active:scale-95">
+                            Start Your Journey <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <a href="tel:09967035943" class="px-8 py-4 border-2 border-brand-primary text-brand-primary rounded-full text-lg font-bold flex items-center justify-center gap-2 hover:bg-brand-primary/5 transition-all active:scale-95">
+                            <i data-lucide="phone" class="w-5 h-5"></i> Call Now
+                        </a>
+                    </div>
+                    
+                    <div class="mt-12 flex items-center justify-center lg:justify-start gap-6 md:gap-8">
+                        <div class="flex items-center gap-2">
+                            <div class="text-2xl md:text-3xl font-bold text-brand-primary">4.9</div>
+                            <div class="flex flex-col">
+                                <div class="flex text-brand-accent">
+                                    <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                    <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                    <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                    <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                    <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                </div>
+                                <div class="text-[10px] uppercase tracking-tighter font-bold text-slate-400">Google Rating</div>
+                            </div>
+                        </div>
+                        <div class="h-8 w-px bg-slate-200"></div>
+                        <div class="flex items-center gap-2">
+                            <div class="text-2xl md:text-3xl font-bold text-brand-primary">47+</div>
+                            <div class="text-[10px] uppercase tracking-tighter font-bold text-slate-400">Happy <br> Clients</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative w-full max-w-lg mx-auto lg:max-w-none">
+                    <div class="relative z-10 rounded-[40px] md:rounded-[60px] overflow-hidden shadow-2xl border-4 md:border-8 border-white bg-white">
+                        <img 
+                            src="https://lh3.googleusercontent.com/p/AF1QipMOaAbLt7NMH0lczRpOY0kiFUS6ivUcZAFORFpl=s1360-w1360-h1020-rw" 
+                            alt="AltMindShift Therapy" 
+                            class="w-full aspect-[4/5] object-cover block"
+                        >
+                    </div>
+                    <div class="absolute -top-5 -right-5 md:-top-10 md:-right-10 w-24 h-24 md:w-40 md:h-40 bg-brand-secondary/20 rounded-full blur-2xl md:blur-3xl z-0"></div>
+                    <div class="absolute -bottom-5 -left-5 md:-bottom-10 md:-left-10 w-24 h-24 md:w-40 md:h-40 bg-brand-primary/10 rounded-full blur-2xl md:blur-3xl z-0"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section-padding bg-white">
+            <div class="container-custom">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                    <div class="order-2 lg:order-1">
+                        <div class="grid grid-cols-2 gap-3 md:gap-4">
+                            <img src="https://lh3.googleusercontent.com/p/AF1QipOsNkPxv5al2CZtkDiWDkJHt6T5G8NYDbJ73Pw2=s1360-w1360-h1020-rw" class="rounded-2xl md:rounded-3xl shadow-lg mt-4 md:mt-8 aspect-square object-cover" alt="AltMindShift Session">
+                            <img src="https://lh3.googleusercontent.com/gps-cs-s/AHVAwepHrJT432aPMbv8mJxJ3Ym30a6-jfmFYGk4VFngttxjs_9eM2nwMjTGVB-msHv9KY8MGh1eWF8NinOEBGOzPUoeFkzftv84x3J36xvpA_TWvyM0u0z1tPs3SlIOEvwDEKI1eR-o=s1360-w1360-h1020-rw" class="rounded-2xl md:rounded-3xl shadow-lg aspect-square object-cover" alt="AltMindShift Workshop">
+                            <img src="https://lh3.googleusercontent.com/p/AF1QipNW315kzeYouDxbvuEragPlKO4-k4tx_QucYjD9=s1360-w1360-h1020-rw" class="rounded-2xl md:rounded-3xl shadow-lg aspect-square object-cover" alt="AltMindShift Office">
+                            <img src="https://lh3.googleusercontent.com/p/AF1QipM38Mo95tFNVBhdT1FKzvC83hYRxznadaKKqita=s1360-w1360-h1020-rw" class="rounded-2xl md:rounded-3xl shadow-lg -mt-4 md:-mt-8 aspect-square object-cover" alt="AltMindShift Consultation">
+                        </div>
+                    </div>
+                    
+                    <div class="order-1 lg:order-2 text-center lg:text-left">
+                        <span class="text-brand-primary font-bold uppercase tracking-[0.2em] text-xs mb-4 block">About the Organisation</span>
+                        <h2 class="text-3xl md:text-5xl mb-6 md:mb-8 leading-tight">Expertise Built on Dedicated Mental Health Service</h2>
+                        <p class="text-base md:text-lg text-slate-600 mb-8 leading-relaxed">
+                            AltMindShift is a mental health organisation and employee wellbeing consultancy based in McLeod Ganj, Dharamshala. We offer holistic Employee Assistance Programs (EAP) for companies with evidence-based intervention strategies from a Cognitive Model in behavioral science.
+                        </p>
+                        
+                        <div class="space-y-6 mb-10 text-left">
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-2xl bg-brand-bg flex items-center justify-center text-brand-primary shrink-0">
+                                    <i data-lucide="award" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800">REBT Specialists</h4>
+                                    <p class="text-sm text-slate-500">Focus on Rational Emotive Behavior Therapy.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-2xl bg-brand-bg flex items-center justify-center text-brand-primary shrink-0">
+                                    <i data-lucide="user-check" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800">Professional Mentoring</h4>
+                                    <p class="text-sm text-slate-500">Programs for psychology professionals and students.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <div class="w-12 h-12 rounded-2xl bg-brand-bg flex items-center justify-center text-brand-primary shrink-0">
+                                    <i data-lucide="activity" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800">Evidence-Based</h4>
+                                    <p class="text-sm text-slate-500">Strategies derived from behavioral science models.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="#services" class="inline-flex items-center gap-2 text-brand-primary font-bold hover:gap-4 transition-all">
+                            Learn more about our expertise <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section-padding bg-brand-bg">
+            <div class="container-custom">
+                <div class="text-center mb-16 md:mb-20">
+                    <span class="text-brand-primary font-bold uppercase tracking-[0.2em] text-xs mb-4 block">Our Services</span>
+                    <h2 class="text-3xl md:text-5xl mb-6">Comprehensive Care for Every Emotional Stage</h2>
+                    <p class="text-slate-500 max-w-2xl mx-auto text-sm md:text-base">We provide a wide range of mental health services tailored to individual and corporate needs.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                    <!-- Service 1 -->
+                    <div class="bg-white p-8 md:p-10 rounded-[30px] md:rounded-[40px] card-shadow border border-slate-100">
+                        <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-brand-bg flex items-center justify-center text-brand-primary mb-6 md:mb-8">
+                            <i data-lucide="heart" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl mb-4">Counseling & Psychotherapy</h3>
+                        <p class="text-xs md:text-sm text-slate-500 mb-6 md:mb-8 leading-relaxed">Evidence-based REBT for emotional problems, anxiety, and depression.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-2 text-[10px] md:text-xs font-semibold text-slate-600"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-secondary"></i> Individual Therapy</li>
+                            <li class="flex items-center gap-2 text-[10px] md:text-xs font-semibold text-slate-600"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-secondary"></i> Cognitive Restructuring</li>
+                            <li class="flex items-center gap-2 text-[10px] md:text-xs font-semibold text-slate-600"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-secondary"></i> Emotional Regulation</li>
+                        </ul>
+                    </div>
+                    <!-- Service 2 -->
+                    <div class="bg-white p-8 md:p-10 rounded-[30px] md:rounded-[40px] card-shadow border border-slate-100">
+                        <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-brand-bg flex items-center justify-center text-brand-primary mb-6 md:mb-8">
+                            <i data-lucide="users" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl mb-4">Employee Counseling (EAP)</h3>
+                        <p class="text-xs md:text-sm text-slate-500 mb-6 md:mb-8 leading-relaxed">Holistic consultancy for companies to support workforce mental health.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-2 text-[10px] md:text-xs font-semibold text-slate-600"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-secondary"></i> Crisis Support</li>
+                            <li class="flex items-center gap-2 text-[10px] md:text-xs font-semibold text-slate-600"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-secondary"></i> Burnout Prevention</li>
+                            <li class="flex items-center gap-2 text-[10px] md:text-xs font-semibold text-slate-600"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-secondary"></i> Leadership Mentoring</li>
+                        </ul>
+                    </div>
+                    <!-- Service 3 -->
+                    <div class="bg-white p-8 md:p-10 rounded-[30px] md:rounded-[40px] card-shadow border border-slate-100">
+                        <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-brand-bg flex items-center justify-center text-brand-primary mb-6 md:mb-8">
+                            <i data-lucide="brain" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl mb-4">Professional Mentoring</h3>
+                        <p class="text-xs md:text-sm text-slate-500 mb-6 md:mb-8 leading-relaxed">Advanced training in Psychology and REBT for students and professionals.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-2 text-[10px] md:text-xs font-semibold text-slate-600"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-secondary"></i> Case Supervision</li>
+                            <li class="flex items-center gap-2 text-[10px] md:text-xs font-semibold text-slate-600"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-secondary"></i> Clinical Skills</li>
+                            <li class="flex items-center gap-2 text-[10px] md:text-xs font-semibold text-slate-600"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-secondary"></i> REBT Certification</li>
+                        </ul>
+                    </div>
+                    <!-- Service 4 -->
+                    <div class="bg-white p-8 md:p-10 rounded-[30px] md:rounded-[40px] card-shadow border border-slate-100">
+                        <div class="w-14 h-14 md:w-16 md:h-16 rounded-2xl md:rounded-3xl bg-brand-bg flex items-center justify-center text-brand-primary mb-6 md:mb-8">
+                            <i data-lucide="sparkles" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-xl md:text-2xl mb-4">EI Programs for Schools</h3>
+                        <p class="text-xs md:text-sm text-slate-500 mb-6 md:mb-8 leading-relaxed">Emotional Intelligence programs designed for educational environments.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-2 text-[10px] md:text-xs font-semibold text-slate-600"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-secondary"></i> Student Workshops</li>
+                            <li class="flex items-center gap-2 text-[10px] md:text-xs font-semibold text-slate-600"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-secondary"></i> Teacher Training</li>
+                            <li class="flex items-center gap-2 text-[10px] md:text-xs font-semibold text-slate-600"><i data-lucide="check-circle-2" class="w-4 h-4 text-brand-secondary"></i> Curriculum Design</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workshops Section -->
+        <section id="workshops" class="section-padding bg-white">
+            <div class="container-custom">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+                    <div class="max-w-2xl">
+                        <span class="text-brand-primary font-bold uppercase tracking-[0.2em] text-xs mb-4 block">Join Our Community</span>
+                        <h2 class="text-4xl md:text-5xl">Sunday Wellbeing Workshops</h2>
+                        <p class="text-slate-500 mt-4">Interactive weekend sessions designed to build practical resilience and emotional intelligence.</p>
+                    </div>
+                    <div class="flex items-center gap-3 px-6 py-3 bg-brand-bg rounded-2xl border border-brand-primary/10">
+                        <i data-lucide="calendar" class="w-6 h-6 text-brand-primary"></i>
+                        <span class="font-bold text-brand-primary">Every Sunday</span>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Workshop 1 -->
+                    <div class="p-8 rounded-[40px] border border-slate-100 bg-brand-bg/30 hover:bg-white hover:shadow-xl transition-all duration-300 group">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-brand-primary shadow-sm group-hover:bg-brand-primary group-hover:text-white transition-colors">
+                                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-lg font-bold text-brand-primary">₹1,000.00</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-4 leading-tight">Building Hope & Motivation Without Toxic Positivity</h3>
+                        <p class="text-sm text-slate-500 mb-8 leading-relaxed">Learn to cultivate genuine optimism and resilience through behavioral science.</p>
+                        <button class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary hover:gap-4 transition-all">
+                            Book Workshop <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                    <!-- Workshop 2 -->
+                    <div class="p-8 rounded-[40px] border border-slate-100 bg-brand-bg/30 hover:bg-white hover:shadow-xl transition-all duration-300 group">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-brand-primary shadow-sm group-hover:bg-brand-primary group-hover:text-white transition-colors">
+                                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-lg font-bold text-brand-primary">₹1,000.00</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-4 leading-tight">Coping with Loneliness</h3>
+                        <p class="text-sm text-slate-500 mb-8 leading-relaxed">Practical strategies to build meaningful connections and manage isolation.</p>
+                        <button class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary hover:gap-4 transition-all">
+                            Book Workshop <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                    <!-- Workshop 3 -->
+                    <div class="p-8 rounded-[40px] border border-slate-100 bg-brand-bg/30 hover:bg-white hover:shadow-xl transition-all duration-300 group">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-brand-primary shadow-sm group-hover:bg-brand-primary group-hover:text-white transition-colors">
+                                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-lg font-bold text-brand-primary">₹1,000.00</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-4 leading-tight">Managing Anxiety & Overthinking</h3>
+                        <p class="text-sm text-slate-500 mb-8 leading-relaxed">Tools to break the cycle of rumination and find mental clarity.</p>
+                        <button class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary hover:gap-4 transition-all">
+                            Book Workshop <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                    <!-- Workshop 4 -->
+                    <div class="p-8 rounded-[40px] border border-slate-100 bg-brand-bg/30 hover:bg-white hover:shadow-xl transition-all duration-300 group">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-brand-primary shadow-sm group-hover:bg-brand-primary group-hover:text-white transition-colors">
+                                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-lg font-bold text-brand-primary">₹1,000.00</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-4 leading-tight">Overcoming Self-Sabotage</h3>
+                        <p class="text-sm text-slate-500 mb-8 leading-relaxed">Identify and change the hidden patterns that hold you back from success.</p>
+                        <button class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary hover:gap-4 transition-all">
+                            Book Workshop <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                    <!-- Workshop 5 -->
+                    <div class="p-8 rounded-[40px] border border-slate-100 bg-brand-bg/30 hover:bg-white hover:shadow-xl transition-all duration-300 group">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-brand-primary shadow-sm group-hover:bg-brand-primary group-hover:text-white transition-colors">
+                                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-lg font-bold text-brand-primary">₹1,000.00</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-4 leading-tight">Overcoming Procrastination</h3>
+                        <p class="text-sm text-slate-500 mb-8 leading-relaxed">Action-oriented techniques to boost productivity and focus.</p>
+                        <button class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary hover:gap-4 transition-all">
+                            Book Workshop <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                    <!-- Workshop 6 -->
+                    <div class="p-8 rounded-[40px] border border-slate-100 bg-brand-bg/30 hover:bg-white hover:shadow-xl transition-all duration-300 group">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-brand-primary shadow-sm group-hover:bg-brand-primary group-hover:text-white transition-colors">
+                                <i data-lucide="sparkles" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-lg font-bold text-brand-primary">₹1,000.00</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-4 leading-tight">Speaking Up & Boundary Setting</h3>
+                        <p class="text-sm text-slate-500 mb-8 leading-relaxed">Master the art of assertive communication and healthy personal boundaries.</p>
+                        <button class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-primary hover:gap-4 transition-all">
+                            Book Workshop <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Patient Stories -->
+        <section id="reviews" class="section-padding bg-white overflow-hidden">
+            <div class="container-custom">
+                <div class="flex flex-col lg:flex-row justify-between items-end mb-20 gap-8">
+                    <div class="max-w-2xl">
+                        <span class="text-brand-primary font-bold uppercase tracking-[0.2em] text-xs mb-4 block">Patient Stories</span>
+                        <h2 class="text-4xl md:text-5xl">Trusted by Thousands of Happy Families</h2>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="flex text-brand-accent">
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        </div>
+                        <span class="font-bold text-slate-800">4.9/5 Average Rating</span>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Review 1 -->
+                    <div class="bg-brand-bg p-10 rounded-[40px] relative">
+                        <i data-lucide="quote" class="w-12 h-12 text-brand-primary/10 absolute top-8 right-8"></i>
+                        <div class="flex text-brand-accent mb-6">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-lg italic text-slate-600 mb-10 leading-relaxed">"I resonated with REBT more maybe because of its focus on emotions and how we deal with them. The sessions were interactive, engaging, and full of practical insights."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-brand-primary text-white flex items-center justify-center font-bold text-xl">P</div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Prathamesh</h4>
+                                <p class="text-xs text-slate-400 font-bold uppercase tracking-widest">Verified Review</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Review 2 -->
+                    <div class="bg-brand-bg p-10 rounded-[40px] relative">
+                        <i data-lucide="quote" class="w-12 h-12 text-brand-primary/10 absolute top-8 right-8"></i>
+                        <div class="flex text-brand-accent mb-6">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-lg italic text-slate-600 mb-10 leading-relaxed">"Learning from Rajita ma'am was a great experience. Her techniques are simple, clear and extremely effective. She communicates with empathy."</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-brand-primary text-white flex items-center justify-center font-bold text-xl">K</div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Khushboo Mathuria</h4>
+                                <p class="text-xs text-slate-400 font-bold uppercase tracking-widest">Verified Review</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Review 3 -->
+                    <div class="bg-brand-bg p-10 rounded-[40px] relative">
+                        <i data-lucide="quote" class="w-12 h-12 text-brand-primary/10 absolute top-8 right-8"></i>
+                        <div class="flex text-brand-accent mb-6">
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                            <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        </div>
+                        <p class="text-lg italic text-slate-600 mb-10 leading-relaxed">"They really changed my life. From being a victim of the countless things that happened to me, I became a survivor, a positive evidence that I can always bounce back!!"</p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-brand-primary text-white flex items-center justify-center font-bold text-xl">A</div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Aryan</h4>
+                                <p class="text-xs text-slate-400 font-bold uppercase tracking-widest">Verified Review</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section-padding bg-brand-bg">
+            <div class="container-custom max-w-4xl">
+                <div class="text-center mb-16">
+                    <span class="text-brand-primary font-bold uppercase tracking-[0.2em] text-xs mb-4 block">Common Questions</span>
+                    <h2 class="text-4xl md:text-5xl">Frequently Asked Questions</h2>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- FAQ 1 -->
+                    <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 card-shadow faq-item">
+                        <button class="w-full p-8 flex justify-between items-center text-left faq-toggle">
+                            <span class="font-bold text-xl text-slate-800">What is Rational Emotive Behavior Therapy (REBT)?</span>
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center transition-all bg-brand-bg text-brand-primary faq-icon">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                            </div>
+                        </button>
+                        <div class="px-8 pb-8 text-slate-600 leading-relaxed hidden faq-content">
+                            REBT is a cognitive-behavioral approach that helps individuals identify and challenge self-defeating thoughts and feelings, replacing them with more rational ones.
+                        </div>
+                    </div>
+                    <!-- FAQ 2 -->
+                    <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 card-shadow faq-item">
+                        <button class="w-full p-8 flex justify-between items-center text-left faq-toggle">
+                            <span class="font-bold text-xl text-slate-800">How can I book an appointment?</span>
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center transition-all bg-brand-bg text-brand-primary faq-icon">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                            </div>
+                        </button>
+                        <div class="px-8 pb-8 text-slate-600 leading-relaxed hidden faq-content">
+                            You can call us directly at 099670 35943. We recommend calling for counseling appointments to discuss availability.
+                        </div>
+                    </div>
+                    <!-- FAQ 3 -->
+                    <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 card-shadow faq-item">
+                        <button class="w-full p-8 flex justify-between items-center text-left faq-toggle">
+                            <span class="font-bold text-xl text-slate-800">Do you offer corporate workshops?</span>
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center transition-all bg-brand-bg text-brand-primary faq-icon">
+                                <i data-lucide="plus" class="w-4 h-4"></i>
+                            </div>
+                        </button>
+                        <div class="px-8 pb-8 text-slate-600 leading-relaxed hidden faq-content">
+                            Yes, we offer holistic Employee Assistance Programs (EAP) and wellbeing workshops tailored for companies and organisations.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-padding bg-white">
+            <div class="container-custom">
+                <div class="bg-brand-primary rounded-[40px] md:rounded-[60px] overflow-hidden grid lg:grid-cols-2 shadow-2xl">
+                    <div class="p-8 md:p-20 text-white">
+                        <span class="text-brand-secondary font-bold uppercase tracking-[0.2em] text-xs mb-4 block">Contact Us</span>
+                        <h2 class="text-3xl md:text-5xl text-white mb-6 md:mb-8">Ready to Start Your Journey to Better Health?</h2>
+                        <p class="text-white/70 mb-8 md:mb-12 text-base md:text-lg">Contact us for appointments and inquiries. We are here to support your mental wellbeing.</p>
+                        
+                        <div class="space-y-6 md:space-y-8">
+                            <div class="flex items-center gap-4 md:gap-6">
+                                <div class="w-12 h-12 md:w-14 md:h-14 bg-white/10 rounded-xl md:rounded-2xl flex items-center justify-center shrink-0">
+                                    <i data-lucide="phone" class="w-5 h-5 md:w-6 md:h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] md:text-xs font-bold uppercase tracking-widest opacity-60">Call Us</p>
+                                    <p class="text-xl md:text-2xl font-serif">099670 35943</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4 md:gap-6">
+                                <div class="w-12 h-12 md:w-14 md:h-14 bg-white/10 rounded-xl md:rounded-2xl flex items-center justify-center shrink-0">
+                                    <i data-lucide="map-pin" class="w-5 h-5 md:w-6 md:h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] md:text-xs font-bold uppercase tracking-widest opacity-60">Visit Us</p>
+                                    <p class="text-sm md:text-lg">Khara Danda Marg, Jogiwara Rd, McLeod Ganj, Dharamshala</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-12 md:mt-16 flex gap-4 md:gap-6">
+                            <a href="#" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-brand-primary transition-all"><i data-lucide="instagram" class="w-5 h-5 md:w-6 md:h-6"></i></a>
+                            <a href="#" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-brand-primary transition-all"><i data-lucide="linkedin" class="w-5 h-5 md:w-6 md:h-6"></i></a>
+                            <a href="#" class="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white/10 flex items-center justify-center hover:bg-white hover:text-brand-primary transition-all"><i data-lucide="facebook" class="w-5 h-5 md:w-6 md:h-6"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-0 overflow-hidden relative min-h-[350px] md:min-h-[500px]">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3375.9733!2d76.3243!3d32.2355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3904a07000000001%3A0x0000000000000000!2sAltMindShift!5e0!3m2!1sen!2sin!4v1711634567890!5m2!1sen!2sin" 
+                            class="w-full h-full absolute inset-0 border-none grayscale contrast-125 opacity-80"
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                        ></iframe>
+                        <div class="absolute bottom-4 left-4 right-4 md:bottom-10 md:left-10 md:right-10">
+                            <a 
+                                href="https://www.google.com/maps/dir//AltMindShift,+Khara+Danda+Marg,+Jogiwara+Rd,+McLeod+Ganj,+Dharamshala,+Himachal+Pradesh+176215" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                class="w-full py-4 md:py-5 bg-brand-primary text-white rounded-xl md:rounded-2xl font-bold hover:bg-brand-secondary transition-all shadow-2xl flex items-center justify-center gap-2 md:gap-3 backdrop-blur-sm text-xs md:text-base px-4 text-center"
+                            >
+                                <i data-lucide="map-pin" class="w-4 h-4 md:w-5 md:h-5"></i> Get Directions on Google Maps <i data-lucide="arrow-right" class="w-4 h-4 md:w-5 md:h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-brand-bg border-t border-slate-100">
+        <div class="container-custom flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-brand-primary rounded-full flex items-center justify-center text-white">
+                    <i data-lucide="brain" class="w-5 h-5"></i>
+                </div>
+                <span class="text-xl font-serif font-bold text-brand-primary">AltMindShift</span>
+            </div>
+            
+            <p class="text-sm text-slate-400 font-medium">© 2026 AltMindShift - Dharamshala Branch. All rights reserved.</p>
+            
+            <div class="flex gap-8 text-xs font-bold uppercase tracking-widest text-slate-400">
+                <a href="#" class="hover:text-brand-primary transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-brand-primary transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Action -->
+    <a href="tel:09967035943" class="fixed bottom-8 right-8 w-16 h-16 bg-brand-primary text-white rounded-full shadow-2xl flex items-center justify-center z-50 lg:hidden active:scale-95 transition-transform">
+        <i data-lucide="phone" class="w-6 h-6"></i>
+    </a>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile Menu Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function openMenu() {
+            mobileMenu.classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.add('translate-x-full');
+            document.body.style.overflow = '';
+        }
+
+        menuToggle.addEventListener('click', openMenu);
+        menuClose.addEventListener('click', closeMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+        // Header Scroll Effect
+        const header = document.getElementById('main-header');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-md');
+                header.classList.remove('bg-white', 'lg:bg-[#F9FBFA]/95');
+                navLinks.forEach(link => link.classList.add('text-slate-600'));
+                navLinks.forEach(link => link.classList.remove('text-brand-primary'));
+            } else {
+                header.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-md');
+                header.classList.add('bg-white', 'lg:bg-[#F9FBFA]/95');
+                navLinks.forEach(link => link.classList.remove('text-slate-600'));
+                navLinks.forEach(link => link.classList.add('text-brand-primary'));
+            }
+        });
+
+        // FAQ Toggle Logic
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('.faq-icon i');
+                const iconContainer = toggle.querySelector('.faq-icon');
+
+                // Close other FAQs
+                document.querySelectorAll('.faq-content').forEach(otherContent => {
+                    if (otherContent !== content) {
+                        otherContent.classList.add('hidden');
+                        const otherToggle = otherContent.previousElementSibling;
+                        const otherIcon = otherToggle.querySelector('.faq-icon i');
+                        const otherIconContainer = otherToggle.querySelector('.faq-icon');
+                        otherIcon.setAttribute('data-lucide', 'plus');
+                        otherIconContainer.classList.remove('bg-brand-primary', 'text-white');
+                        otherIconContainer.classList.add('bg-brand-bg', 'text-brand-primary');
+                    }
+                });
+
+                // Toggle current FAQ
+                const isHidden = content.classList.contains('hidden');
+                if (isHidden) {
+                    content.classList.remove('hidden');
+                    icon.setAttribute('data-lucide', 'x');
+                    iconContainer.classList.add('bg-brand-primary', 'text-white');
+                    iconContainer.classList.remove('bg-brand-bg', 'text-brand-primary');
+                } else {
+                    content.classList.add('hidden');
+                    icon.setAttribute('data-lucide', 'plus');
+                    iconContainer.classList.remove('bg-brand-primary', 'text-white');
+                    iconContainer.classList.add('bg-brand-bg', 'text-brand-primary');
+                }
+                lucide.createIcons();
+            });
+        });
+
+        // Simple Fade-in Animation on Scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(el => {
+            el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
