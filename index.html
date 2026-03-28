@@ -530,37 +530,37 @@
                 <div class="space-y-4">
                     <!-- FAQ 1 -->
                     <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 card-shadow faq-item">
-                        <button class="w-full p-8 flex justify-between items-center text-left faq-toggle">
-                            <span class="font-bold text-xl text-slate-800">What is Rational Emotive Behavior Therapy (REBT)?</span>
+                        <button class="w-full p-6 md:p-8 flex justify-between items-center text-left faq-toggle">
+                            <span class="font-bold text-lg md:text-xl text-slate-800">What is Rational Emotive Behavior Therapy (REBT)?</span>
                             <div class="w-8 h-8 rounded-full flex items-center justify-center transition-all bg-brand-bg text-brand-primary faq-icon">
                                 <i data-lucide="plus" class="w-4 h-4"></i>
                             </div>
                         </button>
-                        <div class="px-8 pb-8 text-slate-600 leading-relaxed hidden faq-content">
+                        <div class="px-6 md:px-8 pb-6 md:pb-8 text-sm md:text-base text-slate-600 leading-relaxed hidden faq-content">
                             REBT is a cognitive-behavioral approach that helps individuals identify and challenge self-defeating thoughts and feelings, replacing them with more rational ones.
                         </div>
                     </div>
                     <!-- FAQ 2 -->
                     <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 card-shadow faq-item">
-                        <button class="w-full p-8 flex justify-between items-center text-left faq-toggle">
-                            <span class="font-bold text-xl text-slate-800">How can I book an appointment?</span>
+                        <button class="w-full p-6 md:p-8 flex justify-between items-center text-left faq-toggle">
+                            <span class="font-bold text-lg md:text-xl text-slate-800">How can I book an appointment?</span>
                             <div class="w-8 h-8 rounded-full flex items-center justify-center transition-all bg-brand-bg text-brand-primary faq-icon">
                                 <i data-lucide="plus" class="w-4 h-4"></i>
                             </div>
                         </button>
-                        <div class="px-8 pb-8 text-slate-600 leading-relaxed hidden faq-content">
+                        <div class="px-6 md:px-8 pb-6 md:pb-8 text-sm md:text-base text-slate-600 leading-relaxed hidden faq-content">
                             You can call us directly at 099670 35943. We recommend calling for counseling appointments to discuss availability.
                         </div>
                     </div>
                     <!-- FAQ 3 -->
                     <div class="bg-white rounded-3xl overflow-hidden border border-slate-100 card-shadow faq-item">
-                        <button class="w-full p-8 flex justify-between items-center text-left faq-toggle">
-                            <span class="font-bold text-xl text-slate-800">Do you offer corporate workshops?</span>
+                        <button class="w-full p-6 md:p-8 flex justify-between items-center text-left faq-toggle">
+                            <span class="font-bold text-lg md:text-xl text-slate-800">Do you offer corporate workshops?</span>
                             <div class="w-8 h-8 rounded-full flex items-center justify-center transition-all bg-brand-bg text-brand-primary faq-icon">
                                 <i data-lucide="plus" class="w-4 h-4"></i>
                             </div>
                         </button>
-                        <div class="px-8 pb-8 text-slate-600 leading-relaxed hidden faq-content">
+                        <div class="px-6 md:px-8 pb-6 md:pb-8 text-sm md:text-base text-slate-600 leading-relaxed hidden faq-content">
                             Yes, we offer holistic Employee Assistance Programs (EAP) and wellbeing workshops tailored for companies and organisations.
                         </div>
                     </div>
@@ -701,17 +701,16 @@
         faqToggles.forEach(toggle => {
             toggle.addEventListener('click', () => {
                 const content = toggle.nextElementSibling;
-                const icon = toggle.querySelector('.faq-icon i');
                 const iconContainer = toggle.querySelector('.faq-icon');
 
                 // Close other FAQs
                 document.querySelectorAll('.faq-content').forEach(otherContent => {
-                    if (otherContent !== content) {
+                    if (otherContent !== content && !otherContent.classList.contains('hidden')) {
                         otherContent.classList.add('hidden');
                         const otherToggle = otherContent.previousElementSibling;
-                        const otherIcon = otherToggle.querySelector('.faq-icon i');
                         const otherIconContainer = otherToggle.querySelector('.faq-icon');
-                        otherIcon.setAttribute('data-lucide', 'plus');
+                        
+                        otherIconContainer.innerHTML = '<i data-lucide="plus" class="w-4 h-4"></i>';
                         otherIconContainer.classList.remove('bg-brand-primary', 'text-white');
                         otherIconContainer.classList.add('bg-brand-bg', 'text-brand-primary');
                     }
@@ -721,12 +720,12 @@
                 const isHidden = content.classList.contains('hidden');
                 if (isHidden) {
                     content.classList.remove('hidden');
-                    icon.setAttribute('data-lucide', 'x');
+                    iconContainer.innerHTML = '<i data-lucide="x" class="w-4 h-4"></i>';
                     iconContainer.classList.add('bg-brand-primary', 'text-white');
                     iconContainer.classList.remove('bg-brand-bg', 'text-brand-primary');
                 } else {
                     content.classList.add('hidden');
-                    icon.setAttribute('data-lucide', 'plus');
+                    iconContainer.innerHTML = '<i data-lucide="plus" class="w-4 h-4"></i>';
                     iconContainer.classList.remove('bg-brand-primary', 'text-white');
                     iconContainer.classList.add('bg-brand-bg', 'text-brand-primary');
                 }
